@@ -1,4 +1,4 @@
-# How have female and male primary school repetition rates evolved relative to one another in Congo between 1972 and 2012?
+# How have female and male primary school repetition rates evolved relative to one another in the Republic of Congo between 1972 and 2012?
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -25,7 +25,7 @@ df = df.dropna(subset=["Year", "Value"])
 df_pivot = df.pivot(index="Year", columns="Indicator Name", values="Value").reset_index()
 df_pivot = df_pivot.sort_values("Year")
 
-print("Pivoted Congo dataset:")
+print("Pivoted Republic of Congo dataset:")
 display(df_pivot)
 
 # Interpolate missing values for smooth plotting (optional)
