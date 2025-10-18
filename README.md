@@ -1,4 +1,4 @@
-# How have female and male primary school repetition rates evolved relative to one another in Congo between 1972 and 2012?
+# How have female and male primary school repetition rates evolved relative to one another in the Republic of Congo between 1972 and 2012?
 
 ## Abstract
 
@@ -6,7 +6,7 @@ Using World Bank World Development Indicators (WDI), this study examines the evo
 
 ## 1. Question
 
-How have female and male primary school repetition rates evolved relative to one another in Congo between 1972 and 2012?
+How have female and male primary school repetition rates evolved relative to one another in the Republic of Congo between 1972 and 2012?
 
 - **Female repetition proxy**: Repeaters, primary, female (% of female enrollment)
 - **Male repetition proxy**: Repeaters, primary, male (% of male enrollment)
@@ -17,7 +17,7 @@ How have female and male primary school repetition rates evolved relative to one
 - **Indicators**:
   - Repeaters, primary, female (% of female enrollment)
   - Repeaters, primary, male (% of male enrollment)
-- **Coverage**: Congo, 1972–2012
+- **Coverage**: Republic of Congo, 1972–2012
 - **Notes**: National-level data only
 
 ## 3. Method
