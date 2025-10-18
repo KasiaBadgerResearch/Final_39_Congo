@@ -1,0 +1,51 @@
+# How have female and male primary school repetition rates evolved relative to one another in Congo between 1972 and 2012?
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import os
+
+# Folders
+data_raw_folder = "data_raw/"
+data_clean_folder = "data_clean/"
+figures_folder = "figures/"
+
+# Load CSV
+filename = "gender_cog_filtered.csv"  # Filtered dataset with only relevant rows
+df = pd.read_csv(os.path.join(data_raw_folder, filename))
+
+# Keep only needed columns
+df = df[["Year", "Indicator Name", "Value"]]
+
+# Convert Year and Value to numeric, drop invalid rows
+df["Year"] = pd.to_numeric(df["Year"], errors="coerce")
+df["Value"] = pd.to_numeric(df["Value"], errors="coerce")
+df = df.dropna(subset=["Year", "Value"])
+
+# Pivot indicators into separate columns
+df_pivot = df.pivot(index="Year", columns="Indicator Name", values="Value").reset_index()
+df_pivot = df_pivot.sort_values("Year")
+
+print("Pivoted Congo dataset:")
+display(df_pivot)
+
+# Interpolate missing values for smooth plotting (optional)
+df_plot = df_pivot.interpolate(method='linear')
+
+# Plot the indicators
+plt.figure(figsize=(10,6))
+plt.plot(df_plot["Year"], df_plot["Repeaters, primary, female (% of female enrollment)"], 
+         marker='o', linestyle='-', label="Repeaters, primary, female (% of female enrollment)")
+plt.plot(df_plot["Year"], df_plot["Repeaters, primary, male (% of male enrollment)"], 
+         marker='o', linestyle='-', label="Repeaters, primary, male (% of male enrollment)")
+
+plt.title("Congo: Female vs Male primary repeaters (% of enrollment) (1972-2012)")
+plt.xlabel("Year")
+plt.ylabel("Percentage")
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.savefig(os.path.join(figures_folder, "congo_female_vs_male_primary_repeaters.png"))
+plt.show()
+
+# Save cleaned CSV
+df_pivot.to_csv(os.path.join(data_clean_folder, "congo_female_vs_male_primary_repeaters"), index=False)
